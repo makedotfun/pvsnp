@@ -15,7 +15,7 @@ theorem filterMap_some (x : List Bool) : x.filterMap some = x := by
 theorem xx_polytime :
     PvsNP.PolyTimeComputable PvsNP.encodeString PvsNP.encodeString
       (fun x : List Bool => x ++ x) := by
-  have h := PvsNP.Units.m2_two_pass_polytime (fun b => some b) (fun b => some b)
+  have h := PvsNP.Units.m2_two_pass_polytime some some
   convert h using 2
   funext x
   simp [filterMap_some]
@@ -47,7 +47,7 @@ theorem PvsNP.Units.m2_self_concat_preimage :
       rfl
     · intro x
       have hlen : (x ++ x).length = 2 * x.length := by
-        simp [List.length_append]
+        rw [List.length_append]
         omega
       constructor
       · intro hx
