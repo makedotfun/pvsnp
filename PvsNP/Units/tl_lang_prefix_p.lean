@@ -93,8 +93,7 @@ theorem correct (x : List Bool) :
         | false =>
           have e1 : δ St.s0 true = St.s1 := rfl
           have e2 : δ St.s1 false = St.s3 := rfl
-          have e3 : δ St.s3 false = St.s3 := rfl
-          rw [List.foldl_cons, List.foldl_cons, e1, e2, e3, foldl_s3]
+          rw [List.foldl_cons, List.foldl_cons, e1, e2, foldl_s3]
           refine iff_of_false ?_ ?_
           · simp [F]
           · rintro ⟨u, hu⟩
